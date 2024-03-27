@@ -26,7 +26,8 @@ class FilmResource extends JsonResource
             'length'=>$this->length,
             'replacement_cost'=>$this->replacement_cost,
             'rating'=>$this->rating,
-            'special_features'=>$this->special_features
+            'special_features'=>$this->special_features,
+            
         ];
     }
 }

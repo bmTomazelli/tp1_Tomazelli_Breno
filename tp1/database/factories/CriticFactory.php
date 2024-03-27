@@ -7,6 +7,7 @@ use Database\Seeders\FilmSeeder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
 use App\Models\Actor as Actor;
+use App\Models\User;
 
 class CriticFactory extends Factory
 {
@@ -18,13 +19,12 @@ class CriticFactory extends Factory
     public function definition()
     {
         $faker = Faker::create();
+
         return [
-            'user_id'=> $this->random_int(Actor::pluck('id')),
-            'film_id' => $this->random_int(Film::pluck('id')),
-            'score' => $this->random_int(),
-            'comment'=> $this->text(100),
-            'created_at'=>$this->$faker->date(),
-            'updated_at'=>$this->$faker->date(),
+            'user_id'=> User::inRandomOrder()->first()->id,
+            'film_id' => Film::inRandomOrder()->first()->id,
+            'score' => $this->faker->randomFloat(1,0,10),
+            'comment'=> $this->faker->text(100)
         ];
     }
 }
